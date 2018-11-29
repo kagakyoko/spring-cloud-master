@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>pass-cloud-provider-api</artifactId>
+    <packaging>pom</packaging>
+    <name>pass-cloud-provider-api</name>
+    <description>pass-cloud-provider-api</description>
+
+    <parent>
+        <groupId>com.pass.cloud</groupId>
+        <artifactId>spring-cloud-master</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>provider-cloud-mdc-api</module>
+        <module>provider-cloud-opc-api</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>pass-cloud-common</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>provider-cloud-mdc-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>provider-cloud-opc-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>pass-cloud-provider-api</finalName>
+    </build>
+
+</project>
