@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.pass.cloud.base.exception.BusinessException;
 
+import com.pass.cloud.core.generator.IncrementIdGenerator;
+import com.pass.cloud.core.generator.UniqueIdGenerator;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -231,6 +233,10 @@ public abstract class BaseService<T> implements IService<T> {
     @Override
     public List<T> selectByExampleAndRowBounds(Object example, RowBounds rowBounds) {
         return mapper.selectByExampleAndRowBounds(example, rowBounds);
+    }
+
+    protected long generateId() {
+        return UniqueIdGenerator.getInstance(IncrementIdGenerator.getServiceId()).nextId();
     }
 
 }

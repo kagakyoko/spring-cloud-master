@@ -17,6 +17,7 @@
         <module>common-base</module>
         <module>common-core</module>
         <module>common-utils</module>
+        <module>common-zk</module>
     </modules>
 
     <dependencies>
@@ -50,6 +51,11 @@
             <dependency>
                 <groupId>com.pass.cloud</groupId>
                 <artifactId>common-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>common-zk</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
