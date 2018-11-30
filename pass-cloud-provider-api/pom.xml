@@ -16,6 +16,7 @@
     <modules>
         <module>provider-cloud-mdc-api</module>
         <module>provider-cloud-opc-api</module>
+        <module>provider-cloud-sdk-api</module>
     </modules>
 
     <dependencies>
