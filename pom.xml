@@ -41,6 +41,8 @@
         <swagger-bootstrap-ui.version>1.8.5</swagger-bootstrap-ui.version>
         <modelmapper.version>1.1.2</modelmapper.version>
         <curator.version>2.10.0</curator.version>
+        <hutool-all.version>3.0.7</hutool-all.version>
+        <fastjson.version>1.2.47</fastjson.version>
     </properties>
 
     <dependencies>
@@ -121,6 +123,16 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xiaoleilu</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
