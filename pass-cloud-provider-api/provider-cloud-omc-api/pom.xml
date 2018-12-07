@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>provider-cloud-opc-api</artifactId>
+    <artifactId>provider-cloud-omc-api</artifactId>
     <packaging>jar</packaging>
-    <name>provider-cloud-opc-api</name>
-    <description>开放平台中心 - Open platform center api</description>
+    <name>provider-cloud-omc-api</name>
+    <description>订单管理中心 - Order management center api</description>
 
     <parent>
         <groupId>com.pass.cloud</groupId>
@@ -22,7 +22,7 @@
     </dependencies>
 
     <build>
-        <finalName>provider-cloud-opc-api</finalName>
+        <finalName>provider-cloud-omc-api</finalName>
     </build>
 
 </project>

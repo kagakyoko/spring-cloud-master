@@ -15,6 +15,7 @@
 
     <modules>
         <module>provider-cloud-mdc-api</module>
+        <module>provider-cloud-omc-api</module>
         <module>provider-cloud-opc-api</module>
         <module>provider-cloud-sdk-api</module>
     </modules>
@@ -39,6 +40,11 @@
             <dependency>
                 <groupId>com.pass.cloud</groupId>
                 <artifactId>provider-cloud-mdc-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>provider-cloud-omc-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

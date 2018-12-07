@@ -5,7 +5,7 @@
     <artifactId>provider-cloud-mdc-api</artifactId>
     <packaging>jar</packaging>
     <name>provider-cloud-mdc-api</name>
-    <description>provider-cloud-mdc-api</description>
+    <description>数据中心 - Master data center api</description>
 
     <parent>
         <groupId>com.pass.cloud</groupId>
