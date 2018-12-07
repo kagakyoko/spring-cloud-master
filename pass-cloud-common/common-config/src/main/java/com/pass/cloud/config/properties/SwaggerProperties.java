@@ -1,4 +1,4 @@
-package com.pass.cloud.core.properties;
+package com.pass.cloud.config.properties;
 
 import java.io.Serializable;
 

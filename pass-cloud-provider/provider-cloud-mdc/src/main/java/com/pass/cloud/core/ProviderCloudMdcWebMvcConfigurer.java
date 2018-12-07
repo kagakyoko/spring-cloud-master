@@ -1,7 +1,7 @@
 package com.pass.cloud.core;
 
 import com.pass.cloud.core.configuration.SwaggerConfiguration;
-import com.pass.cloud.core.properties.SwaggerProperties;
+import com.pass.cloud.config.properties.SwaggerProperties;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

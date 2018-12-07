@@ -33,6 +33,10 @@
         </dependency>
         <dependency>
             <groupId>com.pass.cloud</groupId>
+            <artifactId>common-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.pass.cloud</groupId>
             <artifactId>common-utils</artifactId>
         </dependency>
         <dependency>
