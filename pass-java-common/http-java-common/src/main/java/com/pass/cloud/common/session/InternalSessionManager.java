@@ -10,6 +10,7 @@ public interface InternalSessionManager {
      * specified session id (if any); otherwise return <code>null</code>.
      *
      * @param id The session id for the session to be returned
+     * @return InternalSession
      * @throws IllegalStateException if a new session cannot be
      *                               instantiated for any reason
      * @throws java.io.IOException   if an input/output error occurs while
@@ -27,6 +28,7 @@ public interface InternalSessionManager {
      * @param sessionId The session id which should be used to create the
      *                  new session; if <code>null</code>, a new session id will be
      *                  generated
+     * @return InternalSession
      * @throws IllegalStateException if a new session cannot be
      *                               instantiated for any reason
      */
@@ -66,9 +68,16 @@ public interface InternalSessionManager {
      * Get a session from the recycled ones or create a new empty one.
      * The PersistentManager manager does not need to create session data
      * because it reads it from the Store.
+     *
+     * @return InternalSession
      */
     InternalSession createEmptySession();
 
+    /**
+     * Get sessions
+     *
+     * @return InternalSession[]
+     */
     InternalSession[] findSessions();
 
     /**

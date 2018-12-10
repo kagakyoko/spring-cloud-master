@@ -1,5 +1,8 @@
 package com.pass.cloud.common.util;
 
+/**
+ * @author takesi
+ */
 public class RandomUtils {
 
     private static final String RANDOM_STR = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -10,6 +10,7 @@ import com.pass.cloud.common.util.http.okhttp.OkHttpSimpleGetRequestExecutor;
  * @author Daniel Qian
  */
 public abstract class SimpleGetRequestExecutor<H, P> implements RequestExecutor<String, String> {
+
     protected RequestHttp<H, P> requestHttp;
 
     public SimpleGetRequestExecutor(RequestHttp<H, P> requestHttp) {

@@ -9,6 +9,9 @@ import com.pass.cloud.common.error.HttpErrorException;
  */
 public interface HttpErrorExceptionHandler {
 
+    /**
+     * @param e
+     */
     void handle(HttpErrorException e);
 
 }

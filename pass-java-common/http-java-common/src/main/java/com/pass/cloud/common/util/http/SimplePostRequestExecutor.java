@@ -11,6 +11,7 @@ import com.pass.cloud.common.util.http.okhttp.OkHttpSimplePostRequestExecutor;
  * @author Daniel Qian
  */
 public abstract class SimplePostRequestExecutor<H, P> implements RequestExecutor<String, String> {
+
     protected RequestHttp<H, P> requestHttp;
 
     public SimplePostRequestExecutor(RequestHttp requestHttp) {

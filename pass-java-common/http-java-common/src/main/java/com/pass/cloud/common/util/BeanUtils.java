@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author <a href="https://github.com/binarywang">binarywang(Binary Wang)</a>
  */
 public class BeanUtils {
+
     private static Logger log = LoggerFactory.getLogger(BeanUtils.class);
 
     /**

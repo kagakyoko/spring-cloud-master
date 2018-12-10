@@ -8,11 +8,15 @@ public interface InternalSession {
     /**
      * Return the <code>HttpSession</code> for which this object
      * is the facade.
+     *
+     * @return HttpSession
      */
     HttpSession getSession();
 
     /**
      * Return the <code>isValid</code> flag for this session.
+     *
+     * @return boolean
      */
     boolean isValid();
 
@@ -25,6 +29,8 @@ public interface InternalSession {
 
     /**
      * Return the session identifier for this session.
+     *
+     * @return String
      */
     String getIdInternal();
 

@@ -25,5 +25,5 @@ package com.pass.cloud.common.session;
  */
 public class Constants {
 
-    public static final String PACKAGE = "me.chanjar.weixin.common.session";
+    public static final String PACKAGE = "com.pass.cloud.common.session";
 }

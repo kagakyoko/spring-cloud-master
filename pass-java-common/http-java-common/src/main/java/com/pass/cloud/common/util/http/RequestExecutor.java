@@ -14,9 +14,13 @@ import com.pass.cloud.common.error.HttpErrorException;
 public interface RequestExecutor<T, E> {
 
     /**
-     * @param uri  uri
-     * @param data 数据
+     * 执行请求
+     *
+     * @param uri
+     * @param data
      * @return T
+     * @throws HttpErrorException
+     * @throws IOException
      */
     T execute(String uri, E data) throws HttpErrorException, IOException;
 }
