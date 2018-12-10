@@ -7,6 +7,6 @@ import tk.mybatis.mapper.common.MySqlMapper;
  * @param <T> the type parameter
  * @author takesi
  */
-public interface MyMapper<T extends BaseEntity> extends Mapper<T>, MySqlMapper<T> {
+public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {
 
 }

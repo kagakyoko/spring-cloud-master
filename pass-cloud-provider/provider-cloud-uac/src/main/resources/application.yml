@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: provider-cloud-uac
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    deserialization:
+      fail_on_unknown_properties: false
+    serialization:
+      indent_output: true
+      fail_on_empty_beans: false
+    parser:
+      allow_single_quotes: true
+      allow_unquoted_control_chars: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  config: classpath:logback-spring.xml

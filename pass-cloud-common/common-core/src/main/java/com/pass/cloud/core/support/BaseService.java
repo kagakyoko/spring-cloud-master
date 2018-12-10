@@ -18,7 +18,7 @@ import tk.mybatis.mapper.common.Mapper;
  */
 public abstract class BaseService<T> implements IService<T> {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     protected Mapper<T> mapper;

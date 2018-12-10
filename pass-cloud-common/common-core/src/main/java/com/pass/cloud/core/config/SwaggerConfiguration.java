@@ -1,4 +1,4 @@
-package com.pass.cloud.core.configuration;
+package com.pass.cloud.core.config;
 
 import java.util.ArrayList;
 import java.util.Collections;
