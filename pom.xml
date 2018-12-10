@@ -20,6 +20,7 @@
         <module>pass-cloud-common</module>
         <module>pass-cloud-provider</module>
         <module>pass-cloud-provider-api</module>
+        <module>pass-java-common</module>
         <module>spring-cloud-discovery</module>
     </modules>
 
