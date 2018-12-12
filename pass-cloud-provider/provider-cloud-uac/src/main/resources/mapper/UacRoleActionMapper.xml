@@ -21,7 +21,7 @@
         where action_id = #{actionId}
     </delete>
 
-    <delete id="deleteByRoleIdList">
+    <delete id="deleteByRoleIdList" parameterType="java.util.List">
         delete from pc_uac_role_action
         where role_id in
         <foreach collection="roleIdList" item="item" index="index" open="(" separator="," close=")">

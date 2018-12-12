@@ -23,7 +23,7 @@
         </foreach>
     </insert>
 
-    <delete id="deleteByRoleIdList">
+    <delete id="deleteByRoleIdList" parameterType="java.util.List">
         delete from pc_uac_role_menu
         where role_id in
         <foreach collection="roleIdList" item="item" index="index" open="(" separator="," close=")">
