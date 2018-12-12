@@ -123,7 +123,7 @@
         </set>
     </sql>
 
-    <delete id="batchDeleteByIdList" parameterType="list">
+    <delete id="batchDeleteByIdList" parameterType="java.util.List">
         delete from pc_uac_action
         where id in
         <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">
@@ -159,7 +159,7 @@
     <select id="queryActionListWithPage" resultType="com.pass.cloud.uac.model.vo.ActionVo">
         SELECT
         <include refid="Base_Column_List">
-            <property name="alias" value="action"></property>
+            <property name="alias" value="action"/>
         </include>
         ,menu.menu_name as menuName
         FROM
@@ -210,7 +210,7 @@
     <select id="getOwnUacActionListByUserId" resultType="com.pass.cloud.uac.model.domain.UacAction">
         select
         <include refid="Base_Column_List">
-            <property name="alias" value="a"></property>
+            <property name="alias" value="a"/>
         </include>
         from pc_uac_role_action ra INNER JOIN pc_uac_role r on ra.role_id = r.id
         INNER JOIN pc_uac_role_user ru on ru.role_id = r.id
@@ -222,7 +222,7 @@
     <select id="listActionListByRoleId" resultType="com.pass.cloud.uac.model.domain.UacAction">
         SELECT
         <include refid="Base_Column_List">
-            <property name="alias" value="a"></property>
+            <property name="alias" value="a"/>
         </include>
         FROM
         pc_uac_action a
@@ -235,7 +235,7 @@
     <select id="listActionList" resultType="com.pass.cloud.uac.model.domain.UacAction">
         SELECT
         <include refid="Base_Column_List">
-            <property name="alias" value="a"></property>
+            <property name="alias" value="a"/>
         </include>
         FROM pc_uac_action a
         where a.menu_id in

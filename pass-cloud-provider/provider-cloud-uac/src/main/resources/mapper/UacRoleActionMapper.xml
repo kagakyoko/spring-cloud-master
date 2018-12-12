@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.pass.cloud.uac.mapper.UacRoleActionMapper">
 
     <resultMap id="BaseResultMap" type="com.pass.cloud.uac.model.domain.UacRoleAction">
@@ -17,7 +16,7 @@
     <sql id="Base_Set_Condition">
     </sql>
 
-    <delete id="deleteByActionId" parameterType="long">
+    <delete id="deleteByActionId" parameterType="java.lang.Long">
         delete from pc_uac_role_action
         where action_id = #{actionId}
     </delete>

@@ -20,6 +20,7 @@ import com.pass.cloud.uac.model.dto.action.ActionMainQueryDto;
 import com.pass.cloud.uac.model.vo.ActionVo;
 import com.pass.cloud.uac.model.vo.MenuVo;
 import com.pass.cloud.uac.service.UacActionService;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,7 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     private UacRoleActionMapper uacRoleActionMapper;
 
     @Override
-    @Transactional(readOnly = true, rollbackFor = Exception.class)
-    public PageInfo queryActionListWithPage(ActionMainQueryDto actionMainQueryDto) {
+    public PageInfo<ActionVo> queryActionListWithPage(ActionMainQueryDto actionMainQueryDto) {
         List<Long> menuIdList = actionMainQueryDto.getMenuIdList();
 
         Long menuId = null;
@@ -63,9 +63,7 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     @Override
     public int deleteActionById(Long actionId) {
         //查询该角色下是否有用户绑定, 有的话提醒不能删除
-        if (null == actionId) {
-            throw new IllegalArgumentException("权限ID不能为空");
-        }
+        Preconditions.checkArgument(actionId != null, "权限ID不能为空");
 
         UacAction uacAction = uacActionMapper.selectByPrimaryKey(actionId);
         if (uacAction == null) {
@@ -80,6 +78,7 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void batchDeleteByIdList(List<Long> deleteIdList) {
         Preconditions.checkArgument(PublicUtil.isNotEmpty(deleteIdList), "删除权限ID不能为空");
 
@@ -97,7 +96,6 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public List<Long> getCheckedActionList(Long roleId) {
         if (roleId == null) {
             throw new UacBizException(ErrorCodeEnum.UAC10012001);
@@ -111,7 +109,6 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public List<Long> getCheckedMenuList(Long roleId) {
         if (roleId == null) {
             throw new UacBizException(ErrorCodeEnum.UAC10012001);
@@ -149,7 +146,7 @@ public class UacActionServiceImpl extends BaseService<UacAction> implements UacA
     @Override
     public UacAction matchesByUrl(String requestUrl) {
         List<UacAction> uacActionList = uacActionMapper.selectAll();
-        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
         for (UacAction uacAction : uacActionList) {
             String url = uacAction.getUrl();

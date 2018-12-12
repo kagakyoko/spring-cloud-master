@@ -7,6 +7,7 @@ import com.pass.cloud.core.support.IService;
 import com.pass.cloud.uac.model.domain.UacAction;
 import com.pass.cloud.uac.model.domain.UacMenu;
 import com.pass.cloud.uac.model.dto.action.ActionMainQueryDto;
+import com.pass.cloud.uac.model.vo.ActionVo;
 import com.pass.cloud.uac.model.vo.MenuVo;
 
 /**
@@ -20,7 +21,7 @@ public interface UacActionService extends IService<UacAction> {
      * @param actionMainQueryDto the action main query dto
      * @return the page info
      */
-    PageInfo queryActionListWithPage(ActionMainQueryDto actionMainQueryDto);
+    PageInfo<ActionVo> queryActionListWithPage(ActionMainQueryDto actionMainQueryDto);
 
     /**
      * Delete action by id int.
