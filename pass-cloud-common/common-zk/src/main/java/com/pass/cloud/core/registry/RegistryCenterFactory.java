@@ -48,7 +48,7 @@ public class RegistryCenterFactory {
      *
      * @param passCloudProperties
      * @param host                the host
-     * @param app                 the app
+     * @param app                 the apps
      */
     public static void startup(PassCloudProperties passCloudProperties, String host, String app) {
         CoordinatorRegistryCenter coordinatorRegistryCenter = createCoordinatorRegistryCenter(passCloudProperties.getZk());

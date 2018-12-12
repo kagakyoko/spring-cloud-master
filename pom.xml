@@ -48,6 +48,7 @@
         <hutool-all.version>3.0.7</hutool-all.version>
         <fastjson.version>1.2.47</fastjson.version>
         <guava.version>23.0</guava.version>
+        <activiti-spring-boot-starter.version>6.0.0</activiti-spring-boot-starter.version>
     </properties>
 
     <dependencies>
@@ -151,6 +152,21 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-basic</artifactId>
+                <version>${activiti-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
+                <version>${activiti-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-jpa</artifactId>
+                <version>${activiti-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
