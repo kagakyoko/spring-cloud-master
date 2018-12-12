@@ -65,7 +65,6 @@ public class UacActionRestController extends BaseController {
      * @param deleteIdList the delete id list
      * @return the wrapper
      */
-
     @ApiOperation(httpMethod = "DELETE", value = "批量删除角色")
     @DeleteMapping(value = "/batchDeleteByIdList", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper batchDeleteByIdList(@ApiParam(name = "deleteIdList", value = "角色Id") @RequestBody List<Long> deleteIdList) {
