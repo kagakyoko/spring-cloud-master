@@ -51,14 +51,15 @@
             )
     </delete>
 
-    <select id="getByUserId" resultMap="BaseResultMap">
+    <select id="getByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
         FROM pc_uac_group_user gu
         WHERE gu.user_id = #{userId, jdbcType=BIGINT}
     </select>
 
-    <select id="selectGroupListByUserId" resultType="com.pass.cloud.uac.model.domain.UacGroup">
+    <select id="selectGroupListByUserId" resultType="com.pass.cloud.uac.model.domain.UacGroup"
+            parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
         FROM
@@ -70,7 +71,7 @@
         and u.id = #{userId,jdbcType=BIGINT}
     </select>
 
-    <select id="listByGroupId" resultMap="BaseResultMap">
+    <select id="listByGroupId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
         FROM pc_uac_group_user gu

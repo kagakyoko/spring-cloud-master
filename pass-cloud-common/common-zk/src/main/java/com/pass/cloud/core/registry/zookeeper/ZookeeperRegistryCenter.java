@@ -474,7 +474,7 @@ public class ZookeeperRegistryCenter implements CoordinatorRegistryCenter {
     /**
      * Register mq.
      *
-     * @param app            the app
+     * @param app            the apps
      * @param host           the host
      * @param producerGroup  the producer group
      * @param consumerGroup  the consumer group

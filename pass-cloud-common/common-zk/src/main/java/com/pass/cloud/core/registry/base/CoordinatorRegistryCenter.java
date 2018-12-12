@@ -82,7 +82,7 @@ public interface CoordinatorRegistryCenter extends RegistryCenter {
     /**
      * 向注册中心进行注册，生成该服务的编号并返回
      *
-     * @param app            the app
+     * @param app            the apps
      * @param host           the host
      * @param producerGroup  the producer group
      * @param consumerGroup  the consumer group

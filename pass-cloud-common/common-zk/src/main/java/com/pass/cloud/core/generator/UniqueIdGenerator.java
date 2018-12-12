@@ -32,7 +32,7 @@ public class UniqueIdGenerator implements IdGenerator {
     private final static long MAX_SEQUENCE = ~(-1L << SEQUENCE_BITS);
 
     /**
-     * app host编号的移位
+     * apps host编号的移位
      */
     private final static long APP_HOST_ID_SHIFT = SEQUENCE_BITS;
 
@@ -64,7 +64,7 @@ public class UniqueIdGenerator implements IdGenerator {
     /**
      * 实例化
      *
-     * @param appHostId the app host id
+     * @param appHostId the apps host id
      * @return the instance
      */
     public static UniqueIdGenerator getInstance(long appHostId) {
@@ -81,7 +81,7 @@ public class UniqueIdGenerator implements IdGenerator {
     private UniqueIdGenerator(long appHostId) {
         if (appHostId > MAX_APP_HOST_ID) {
             // zk分配的serviceId过大(基本小规模的公司不会出现这样的问题)
-            throw new IllegalArgumentException(String.format("app host Id wrong: %d ", appHostId));
+            throw new IllegalArgumentException(String.format("apps host Id wrong: %d ", appHostId));
         }
         this.appHostId = appHostId;
     }
