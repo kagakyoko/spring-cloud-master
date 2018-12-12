@@ -6,11 +6,13 @@ import com.pass.cloud.core.mybatis.MyMapper;
 import com.pass.cloud.uac.model.domain.UacRoleAction;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author takesi
  */
 @Mapper
+@Repository
 public interface UacRoleActionMapper extends MyMapper<UacRoleAction> {
 
     /**

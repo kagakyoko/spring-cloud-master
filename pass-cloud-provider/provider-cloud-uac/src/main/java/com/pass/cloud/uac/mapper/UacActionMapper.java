@@ -10,11 +10,13 @@ import com.pass.cloud.uac.model.vo.ActionVo;
 import com.pass.cloud.uac.model.vo.MenuVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author takesi
  */
 @Mapper
+@Repository
 public interface UacActionMapper extends MyMapper<UacAction> {
 
     /**

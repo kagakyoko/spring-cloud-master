@@ -32,10 +32,10 @@ public interface UacGroupService extends IService<UacGroup> {
     /**
      * Gets group tree.
      *
-     * @param id the id
+     * @param groupId the groupId
      * @return the group tree
      */
-    List<GroupZtreeVo> getGroupTree(Long id);
+    List<GroupZtreeVo> getGroupTree(Long groupId);
 
     /**
      * Find current user have group info list.
@@ -53,5 +53,13 @@ public interface UacGroupService extends IService<UacGroup> {
      * @return the group bind user dto
      */
     GroupBindUserDto getGroupBindUserDto(Long groupId, Long userId);
+
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
+    UacGroup getById(Long id);
 
 }
