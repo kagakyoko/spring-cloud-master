@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 /**
  * @author takesi
  */
-@Service
 public class UacUserDetailsServiceImpl implements UserDetailsService {
 
     private final UacUserService uacUserService;

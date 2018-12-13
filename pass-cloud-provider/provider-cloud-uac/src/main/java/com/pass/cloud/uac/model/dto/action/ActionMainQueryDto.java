@@ -21,31 +21,31 @@ public class ActionMainQueryDto extends BaseQuery {
     /**
      * 资源路径
      */
-    @ApiModelProperty(name = "资源路径")
+    @ApiModelProperty(name = "url", value = "资源路径")
     private String url;
 
     /**
      * 权限名称
      */
-    @ApiModelProperty(name = "权限名称")
+    @ApiModelProperty(value = "权限名称")
     private String actionName;
 
     /**
      * 权限编码
      */
-    @ApiModelProperty(name = "权限编码")
+    @ApiModelProperty(value = "权限编码")
     private String actionCode;
 
     /**
      * 状态
      */
-    @ApiModelProperty(name = "状态")
+    @ApiModelProperty(value = "状态")
     private String status;
 
     /**
      * 菜单ID
      */
-    @ApiModelProperty(name = "菜单ID")
+    @ApiModelProperty(value = "菜单ID")
     private List<Long> menuIdList;
 
 }
