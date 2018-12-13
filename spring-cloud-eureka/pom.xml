@@ -43,7 +43,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <useUniqueVersions>false</useUniqueVersions>
-                            <mainClass>com.pass.cloud.ProviderCloudMdcApplication</mainClass>
+                            <mainClass>com.pass.cloud.eureka.SpringCloudEurekaApplication</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>./</Class-Path>
