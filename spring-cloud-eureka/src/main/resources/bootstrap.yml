@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+      - docker0
+      - veth.*
+      - VM.*
+      preferredNetworks:
+      - 192.168
+eureka:
+  server:
+    enable-self-preservation: false
+    wait-time-in-ms-when-sync-empty: 0
+    renewal-percent-threshold: 0.49
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 30
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
