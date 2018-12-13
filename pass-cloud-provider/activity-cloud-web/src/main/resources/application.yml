@@ -1,17 +1,37 @@
 spring:
   application:
     name: activity-cloud-web
+  resources:
+    static-locations: classpath:/WEB-INF/static/
+  thymeleaf:
+    prefix: classpath:/WEB-INF/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    servlet:
+      content-type: text/html
+    cache: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/pass_cloud_activity?characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://127.0.0.1:3306/pass_cloud_activity?characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
+    druid:
+      validation-query: SELECT 1
+      test-while-idle: true
+      time-between-eviction-runs-millis: 300000
+      min-evictable-idle-time-millis: 3600000
   jpa:
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: true
     show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+  security:
+    user:
+      name: user
+      password: root
+  activiti:
+    rest-api-enabled: true
+    database-schema-update: false
 logging:
   config: classpath:logback-spring.xml
