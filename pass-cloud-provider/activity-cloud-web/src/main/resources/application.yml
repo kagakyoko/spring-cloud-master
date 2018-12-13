@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: activity-cloud-web
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/pass_cloud_activity?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 123456
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: true
+    show-sql: true
+logging:
+  config: classpath:logback-spring.xml
