@@ -1,7 +1,23 @@
 spring:
-  application:
-    name: spring-cloud-discovery
   cloud:
-    nacos:
-      config:
-        server-addr: 127.0.0.1:8848
+    config:
+      server:
+        git:
+          uri: https://takesijiang@bitbucket.org/takesijiang/passcloud-config-repo.git
+          username: nanasetakesi@yahoo.co.jp
+          password: 5Pe-NRk-sgZ-roP
+          search-paths: /*
+          default-label: ${spring.profiles.active}
+          basedir: /data/config/passcloud-config-repo
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+      preferredNetworks:
+        - 192.168
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8761/eureka/

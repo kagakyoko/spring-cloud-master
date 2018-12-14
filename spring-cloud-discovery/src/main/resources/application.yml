@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-cloud-discovery
+  security:
+    user:
+      name: admin
+      password: admin
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+logging:
+  config: classpath:logback-spring.xml
