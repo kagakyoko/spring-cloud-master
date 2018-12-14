@@ -7,4 +7,5 @@ spring:
     user:
       name: root
       password: root
-
+logging:
+  config: classpath:logback-spring.xml
