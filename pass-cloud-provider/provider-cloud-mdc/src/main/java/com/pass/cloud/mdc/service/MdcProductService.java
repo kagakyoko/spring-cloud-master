@@ -2,8 +2,11 @@ package com.pass.cloud.mdc.service;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.pass.cloud.base.dto.LoginAuthDto;
 import com.pass.cloud.core.support.IService;
 import com.pass.cloud.mdc.model.domain.MdcProduct;
+import com.pass.cloud.mdc.model.dto.MdcEditProductDto;
 import com.pass.cloud.mdc.model.dto.ProductDto;
 import com.pass.cloud.mdc.model.vo.ProductDetailVo;
 import com.pass.cloud.mdc.model.vo.ProductVo;
@@ -46,6 +49,14 @@ public interface MdcProductService extends IService<MdcProduct> {
      * @return the list
      */
     List<ProductVo> queryProductListWithPage(MdcProduct mdcProduct);
+
+    /**
+     * 新增商品信息.
+     *
+     * @param mdcEditProductDto the mdc edit product dto
+     * @param loginAuthDto      the login auth dto
+     */
+    void saveProduct(MdcEditProductDto mdcEditProductDto, LoginAuthDto loginAuthDto) throws JsonProcessingException;
 
     /**
      * 删除商品信息.

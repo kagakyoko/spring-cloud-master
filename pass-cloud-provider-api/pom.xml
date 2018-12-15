@@ -18,6 +18,7 @@
         <module>provider-cloud-omc-api</module>
         <module>provider-cloud-opc-api</module>
         <module>provider-cloud-sdk-api</module>
+        <module>provider-cloud-tpc-api</module>
         <module>provider-cloud-uac-api</module>
     </modules>
 
@@ -56,6 +57,11 @@
             <dependency>
                 <groupId>com.pass.cloud</groupId>
                 <artifactId>provider-cloud-sdk-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pass.cloud</groupId>
+                <artifactId>provider-cloud-tpc-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

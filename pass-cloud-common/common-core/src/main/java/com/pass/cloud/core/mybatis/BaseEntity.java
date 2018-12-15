@@ -12,6 +12,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.pass.cloud.base.dto.LoginAuthDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -100,6 +101,25 @@ public class BaseEntity implements Serializable {
     @JsonIgnore
     public boolean isNew() {
         return this.id == null;
+    }
+
+    /**
+     * Sets update info.
+     *
+     * @param user the user
+     */
+    @Transient
+    @JsonIgnore
+    public void setUpdateInfo(LoginAuthDto user) {
+
+        if (isNew()) {
+            this.creatorId = (this.lastOperatorId = user.getUserId());
+            this.creator = user.getUserName();
+            this.createdTime = (this.updateTime = new Date());
+        }
+        this.lastOperatorId = user.getUserId();
+        this.lastOperator = user.getUserName() == null ? user.getLoginName() : user.getUserName();
+        this.updateTime = new Date();
     }
 
 }

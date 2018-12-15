@@ -1,0 +1,40 @@
+package com.pass.cloud.tpc.model.dto;
+
+import java.io.Serializable;
+
+import lombok.Data;
+
+/**
+ * @author takesi
+ */
+@Data
+public class PcMessageJobTask implements Serializable {
+
+    private static final long serialVersionUID = -1689940882253489536L;
+
+    /**
+     * 自增ID
+     */
+    private String id;
+
+    /**
+     * 版本号
+     */
+    private String version;
+
+    /**
+     * 消息key
+     */
+    private Long messageKey;
+
+    /**
+     * topic
+     */
+    private String messageTopic;
+
+    /**
+     * tag
+     */
+    private String messageTag;
+
+}

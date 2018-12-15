@@ -2,7 +2,7 @@ package com.pass.cloud.core;
 
 import java.util.List;
 
-import com.pass.cloud.config.properties.SwaggerProperties;
+import com.pass.cloud.config.PassCloudProperties;
 import com.pass.cloud.core.config.PcObjectMapper;
 import com.pass.cloud.core.config.SwaggerConfiguration;
 
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 @Import(SwaggerConfiguration.class)
-@EnableConfigurationProperties(value = SwaggerProperties.class)
+@EnableConfigurationProperties(value = PassCloudProperties.class)
 public class ProviderCloudUacWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override

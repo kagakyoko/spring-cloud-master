@@ -30,6 +30,10 @@
             <groupId>com.pass.cloud</groupId>
             <artifactId>provider-cloud-opc-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.pass.cloud</groupId>
+            <artifactId>provider-cloud-sdk-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

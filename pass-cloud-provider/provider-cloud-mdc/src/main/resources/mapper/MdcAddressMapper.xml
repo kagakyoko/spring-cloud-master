@@ -53,7 +53,8 @@
         <include refid="Base_Where_Condition"/>
     </select>
 
-    <select id="selectAddressByPid" resultType="com.pass.cloud.mdc.model.domain.MdcAddress">
+    <select id="selectAddressByPid" resultType="com.pass.cloud.mdc.model.domain.MdcAddress"
+            parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
         FROM

@@ -22,10 +22,12 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml
 passcloud:
   swagger:
     title: ${spring.application.name}
     contact-name: takesi
     contact-email: nanasetakesi@yahoo.co.jp
     description: provider-cloud-mdc
+logging:
+  config: classpath:logback-spring.xml

@@ -2,6 +2,8 @@ package com.pass.cloud.mdc.service;
 
 import java.util.List;
 
+import com.pass.cloud.base.dto.LoginAuthDto;
+import com.pass.cloud.base.dto.UpdateStatusDto;
 import com.pass.cloud.core.support.IService;
 import com.pass.cloud.mdc.model.domain.MdcDict;
 import com.pass.cloud.mdc.model.vo.MdcDictVo;
@@ -25,6 +27,23 @@ public interface MdcDictService extends IService<MdcDict> {
      * @return the mdc dict vo by id
      */
     MdcDictVo getMdcDictVoById(Long dictId);
+
+    /**
+     * 根据id修改字典信息.
+     *
+     * @param updateStatusDto the update status dto
+     * @param loginAuthDto    the login auth dto
+     * @return the int
+     */
+    void updateMdcDictStatusById(UpdateStatusDto updateStatusDto, LoginAuthDto loginAuthDto);
+
+    /**
+     * 编辑字典.
+     *
+     * @param mdcDict      the mdc dict
+     * @param loginAuthDto the login auth dto
+     */
+    void saveMdcDict(MdcDict mdcDict, LoginAuthDto loginAuthDto);
 
     /**
      * Check dict has child dict boolean.

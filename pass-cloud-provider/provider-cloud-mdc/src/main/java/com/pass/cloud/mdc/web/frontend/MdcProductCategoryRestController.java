@@ -1,4 +1,4 @@
-package com.pass.cloud.mdc.web;
+package com.pass.cloud.mdc.web.frontend;
 
 import java.util.List;
 

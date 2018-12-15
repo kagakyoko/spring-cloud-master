@@ -3,13 +3,11 @@ package com.pass.cloud.config.properties;
 import java.io.Serializable;
 
 import lombok.Getter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author takesi
  */
 @Getter
-@ConfigurationProperties(prefix = "passcloud.swagger")
 public class SwaggerProperties implements Serializable {
 
     private static final long serialVersionUID = 3319698607712846427L;

@@ -38,7 +38,8 @@
       ${alias}.update_time
     </sql>
 
-    <select id="selectCategoryDtoList" resultType="com.pass.cloud.mdc.model.dto.ProductCategoryDto">
+    <select id="selectCategoryDtoList" resultType="com.pass.cloud.mdc.model.dto.ProductCategoryDto"
+            parameterType="java.lang.Long">
       SELECT
         id   AS categoryId,
         name AS categoryName

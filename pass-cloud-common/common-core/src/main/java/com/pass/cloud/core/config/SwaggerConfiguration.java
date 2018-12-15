@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import com.pass.cloud.config.properties.SwaggerProperties;
+import com.pass.cloud.config.PassCloudProperties;
 
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMethod;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -32,8 +31,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfiguration {
 
-    @Resource
-    private SwaggerProperties swaggerProperties;
+    @Autowired
+    private PassCloudProperties passCloudProperties;
 
     /**
      * Reservation api docket.
@@ -61,12 +60,12 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title(swaggerProperties.getTitle())
-                .description(swaggerProperties.getDescription())
-                .version(swaggerProperties.getVersion())
-                .license(swaggerProperties.getLicense())
-                .licenseUrl(swaggerProperties.getLicenseUrl())
-                .contact(new Contact(swaggerProperties.getContactName(), swaggerProperties.getContactUrl(), swaggerProperties.getContactEmail()))
+                .title(passCloudProperties.getSwagger().getTitle())
+                .description(passCloudProperties.getSwagger().getDescription())
+                .version(passCloudProperties.getSwagger().getVersion())
+                .license(passCloudProperties.getSwagger().getLicense())
+                .licenseUrl(passCloudProperties.getSwagger().getLicenseUrl())
+                .contact(new Contact(passCloudProperties.getSwagger().getContactName(), passCloudProperties.getSwagger().getContactUrl(), passCloudProperties.getSwagger().getContactEmail()))
                 .build();
     }
 

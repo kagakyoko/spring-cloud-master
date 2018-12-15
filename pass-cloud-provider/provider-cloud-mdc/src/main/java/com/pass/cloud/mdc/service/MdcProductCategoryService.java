@@ -2,6 +2,8 @@ package com.pass.cloud.mdc.service;
 
 import java.util.List;
 
+import com.pass.cloud.base.dto.LoginAuthDto;
+import com.pass.cloud.base.dto.UpdateStatusDto;
 import com.pass.cloud.core.support.IService;
 import com.pass.cloud.mdc.model.domain.MdcProductCategory;
 import com.pass.cloud.mdc.model.dto.ProductCategoryDto;
@@ -58,6 +60,22 @@ public interface MdcProductCategoryService extends IService<MdcProductCategory> 
      * @return the mdc category vo by id
      */
     MdcCategoryVo getMdcCategoryVoById(Long id);
+
+    /**
+     * 更新商品分类信息.
+     *
+     * @param updateStatusDto the update status dto
+     * @param loginAuthDto    the login auth dto
+     */
+    void updateMdcCategoryStatusById(UpdateStatusDto updateStatusDto, LoginAuthDto loginAuthDto);
+
+    /**
+     * 保存商品分类信息.
+     *
+     * @param mdcCategory  the mdc category
+     * @param loginAuthDto the login auth dto
+     */
+    void saveMdcCategory(MdcProductCategory mdcCategory, LoginAuthDto loginAuthDto);
 
     /**
      * Check category has child category boolean.

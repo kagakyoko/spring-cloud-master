@@ -6,6 +6,9 @@ import java.util.Set;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.pass.cloud.PublicUtil;
+import com.pass.cloud.base.dto.LoginAuthDto;
+import com.pass.cloud.base.dto.UpdateStatusDto;
 import com.pass.cloud.base.enums.ErrorCodeEnum;
 import com.pass.cloud.core.support.BaseService;
 import com.pass.cloud.core.support.TreeUtils;
@@ -71,6 +74,7 @@ public class MdcProductCategoryServiceImpl extends BaseService<MdcProductCategor
         MdcProductCategory category = mdcProductCategoryMapper.selectByPrimaryKey(categoryId);
 
         if (category == null) {
+            logger.error("找不到数据字典信息id={}", categoryId);
             throw new MdcBizException(ErrorCodeEnum.MDC10023001, categoryId);
         }
 
@@ -89,7 +93,58 @@ public class MdcProductCategoryServiceImpl extends BaseService<MdcProductCategor
     }
 
     @Override
+    public void updateMdcCategoryStatusById(final UpdateStatusDto updateStatusDto, final LoginAuthDto loginAuthDto) {
+        Long id = updateStatusDto.getId();
+        Integer status = updateStatusDto.getStatus();
+        // 要处理的菜单集合
+        List<MdcProductCategory> mdcCategoryList = Lists.newArrayList();
+
+        int result;
+        if (status.equals(MdcCategoryStatusEnum.DISABLE.getType())) {
+            // 获取菜单以及子菜单
+            mdcCategoryList = this.getAllCategoryFolder(id, MdcCategoryStatusEnum.ENABLE.getType());
+        } else {
+            // 获取菜单、其子菜单以及父菜单
+            MdcProductCategory uacMenu = new MdcProductCategory();
+            uacMenu.setPid(id);
+            result = this.selectCount(uacMenu);
+            // 此菜单含有子菜单
+            if (result > 0) {
+                mdcCategoryList = this.getAllCategoryFolder(id, MdcCategoryStatusEnum.DISABLE.getType());
+            }
+            List<MdcProductCategory> categoryListTemp = this.getAllParentCategoryFolderByMenuId(id);
+            for (MdcProductCategory category : categoryListTemp) {
+                if (!mdcCategoryList.contains(category)) {
+                    mdcCategoryList.add(category);
+                }
+            }
+        }
+
+        this.updateCategoryStatus(mdcCategoryList, loginAuthDto, status);
+    }
+
+    @Override
+    public void saveMdcCategory(final MdcProductCategory mdcCategory, final LoginAuthDto loginAuthDto) {
+        Long pid = mdcCategory.getPid();
+        mdcCategory.setUpdateInfo(loginAuthDto);
+        MdcProductCategory parentMenu = mapper.selectByPrimaryKey(pid);
+        if (PublicUtil.isEmpty(parentMenu)) {
+            throw new MdcBizException(ErrorCodeEnum.MDC10023002, pid);
+        }
+        if (mdcCategory.isNew()) {
+            MdcProductCategory updateMenu = new MdcProductCategory();
+            updateMenu.setId(pid);
+            Long categoryId = super.generateId();
+            mdcCategory.setId(categoryId);
+            mapper.insertSelective(mdcCategory);
+        } else {
+            mapper.updateByPrimaryKeySelective(mdcCategory);
+        }
+    }
+
+    @Override
     public boolean checkCategoryHasChildCategory(final Long categoryId) {
+        logger.info("检查数据字典id={}是否存在生效节点", categoryId);
         MdcProductCategory uacMenu = new MdcProductCategory();
         uacMenu.setStatus(MdcCategoryStatusEnum.ENABLE.getType());
         uacMenu.setPid(categoryId);
@@ -120,6 +175,72 @@ public class MdcProductCategoryServiceImpl extends BaseService<MdcProductCategor
         query.setPid(pid);
 
         return mdcProductCategoryMapper.select(query);
+    }
+
+    private void updateCategoryStatus(List<MdcProductCategory> mdcCategoryList, LoginAuthDto loginAuthDto, int status) {
+        MdcProductCategory update = new MdcProductCategory();
+        for (MdcProductCategory category : mdcCategoryList) {
+            update.setId(category.getId());
+            update.setVersion(category.getVersion() + 1);
+            update.setStatus(status);
+            update.setUpdateInfo(loginAuthDto);
+            int result = mapper.updateByPrimaryKeySelective(update);
+            if (result < 1) {
+                throw new MdcBizException(ErrorCodeEnum.MDC10023003, category.getId());
+            }
+        }
+    }
+
+    private List<MdcProductCategory> getAllCategoryFolder(Long id, int categoryStatus) {
+        MdcProductCategory mdcCategory = new MdcProductCategory();
+        mdcCategory.setId(id);
+        mdcCategory = mapper.selectOne(mdcCategory);
+        List<MdcProductCategory> mdcCategoryList = Lists.newArrayList();
+        mdcCategoryList = buildNode(mdcCategoryList, mdcCategory, categoryStatus);
+        return mdcCategoryList;
+    }
+
+    private List<MdcProductCategory> getAllParentCategoryFolderByMenuId(Long categoryId) {
+        MdcProductCategory mdcCategoryQuery = new MdcProductCategory();
+        mdcCategoryQuery.setId(categoryId);
+        mdcCategoryQuery = mapper.selectOne(mdcCategoryQuery);
+        List<MdcProductCategory> mdcCategoryList = Lists.newArrayList();
+        mdcCategoryList = buildParentNote(mdcCategoryList, mdcCategoryQuery);
+        return mdcCategoryList;
+    }
+
+    /**
+     * 递归获取菜单的子节点
+     */
+    private List<MdcProductCategory> buildNode(List<MdcProductCategory> mdcCategoryList, MdcProductCategory uacMenu, int categoryStatus) {
+        List<MdcProductCategory> uacMenuQueryList = mapper.select(uacMenu);
+        MdcProductCategory uacMenuQuery;
+        for (MdcProductCategory category : uacMenuQueryList) {
+            if (categoryStatus == category.getStatus()) {
+                mdcCategoryList.add(category);
+            }
+            uacMenuQuery = new MdcProductCategory();
+            uacMenuQuery.setPid(category.getId());
+            buildNode(mdcCategoryList, uacMenuQuery, categoryStatus);
+        }
+        return mdcCategoryList;
+    }
+
+    /**
+     * 递归获取菜单的父菜单
+     */
+    private List<MdcProductCategory> buildParentNote(List<MdcProductCategory> mdcCategoryList, MdcProductCategory mdcCategory) {
+        List<MdcProductCategory> mdcCategoryQueryList = mapper.select(mdcCategory);
+        MdcProductCategory uacMenuQuery;
+        for (MdcProductCategory category : mdcCategoryQueryList) {
+            if (MdcCategoryStatusEnum.DISABLE.getType() == category.getStatus()) {
+                mdcCategoryList.add(category);
+            }
+            uacMenuQuery = new MdcProductCategory();
+            uacMenuQuery.setId(category.getPid());
+            buildParentNote(mdcCategoryList, uacMenuQuery);
+        }
+        return mdcCategoryList;
     }
 
 }

@@ -55,7 +55,8 @@
       WHERE id = #{id}
     </update>
 
-    <select id="selectByNameAndCategoryIds" resultType="com.pass.cloud.mdc.model.domain.MdcProduct">
+    <select id="selectByNameAndCategoryIds" resultType="com.pass.cloud.mdc.model.domain.MdcProduct"
+            parameterType="java.lang.Object">
         SELECT
         <include refid="Base_Column_List"/>
         from pc_mdc_product
@@ -74,7 +75,8 @@
         </if>
     </select>
 
-    <select id="queryProductListWithPage" resultType="com.pass.cloud.mdc.model.vo.ProductVo">
+    <select id="queryProductListWithPage" resultType="com.pass.cloud.mdc.model.vo.ProductVo"
+            parameterType="com.pass.cloud.mdc.model.domain.MdcProduct">
         SELECT
         <include refid="Base_Column_List"/>
         from pc_mdc_product
