@@ -3,14 +3,12 @@ package com.pass.cloud.uac.model.vo.treeview;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class AdditionalParameters {
 
     /**

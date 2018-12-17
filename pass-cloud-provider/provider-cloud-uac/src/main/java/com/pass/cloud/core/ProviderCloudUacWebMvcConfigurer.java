@@ -4,11 +4,9 @@ import java.util.List;
 
 import com.pass.cloud.config.PassCloudProperties;
 import com.pass.cloud.core.config.PcObjectMapper;
-import com.pass.cloud.core.config.SwaggerConfiguration;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author takesi
  */
 @Configuration
-@Import(SwaggerConfiguration.class)
 @EnableConfigurationProperties(value = PassCloudProperties.class)
 public class ProviderCloudUacWebMvcConfigurer implements WebMvcConfigurer {
 

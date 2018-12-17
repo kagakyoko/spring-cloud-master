@@ -38,7 +38,6 @@ public class SecurityUser implements UserDetails {
     @Getter
     private String groupName;
 
-    @Getter
     private Collection<GrantedAuthority> authorities;
 
     public SecurityUser(Long userId, String loginName, String loginPwd, String nickName, Long groupId, String groupName) {

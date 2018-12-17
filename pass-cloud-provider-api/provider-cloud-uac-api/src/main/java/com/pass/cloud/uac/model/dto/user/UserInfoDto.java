@@ -3,18 +3,18 @@ package com.pass.cloud.uac.model.dto.user;
 import java.io.Serializable;
 import java.util.Date;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
+ * 用户信息Dto
+ *
  * @author takesi
  */
 @Data
-@ApiModel(value = "用户注册Dto")
 public class UserInfoDto implements Serializable {
 
     private static final long serialVersionUID = -889913964833331690L;
+
     private Long id;
 
     private String userId;
@@ -82,10 +82,11 @@ public class UserInfoDto implements Serializable {
     /**
      * 用户所属的组织ID
      */
-    @ApiModelProperty(value = "用户所属的组织ID")
     private Long groupId;
 
-    @ApiModelProperty(value = "用户所属的组织名称")
+    /**
+     * 用户所属的组织名称
+     */
     private String groupName;
 
 }

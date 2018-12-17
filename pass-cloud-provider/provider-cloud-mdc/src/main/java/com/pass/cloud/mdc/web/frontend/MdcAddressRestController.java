@@ -6,9 +6,8 @@ import com.pass.cloud.TreeNode;
 import com.pass.cloud.core.support.BaseController;
 import com.pass.cloud.mdc.model.domain.MdcAddress;
 import com.pass.cloud.mdc.service.MdcAddressService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import com.pass.cloud.wrapper.WrapMapper;
+import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/address")
-@Api(value = "WEB - MdcAddressRestController", tags = "MdcAddressRestController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcAddressRestController extends BaseController {
 
     @Autowired
@@ -33,11 +31,10 @@ public class MdcAddressRestController extends BaseController {
      * @param id
      * @return
      */
-    @ApiOperation(httpMethod = "GET", value = "查看地址详情")
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MdcAddress mdcAddress(@ApiParam(name = "id", value = "地址id", required = true) @PathVariable("id") Long id) {
+    public Wrapper<MdcAddress> mdcAddress(@PathVariable("id") Long id) {
         MdcAddress mdcAddress = mdcAddressService.getById(id);
-        return mdcAddress;
+        return WrapMapper.ok(mdcAddress);
     }
 
     /**
@@ -46,11 +43,10 @@ public class MdcAddressRestController extends BaseController {
      * @param pid
      * @return
      */
-    @ApiOperation(httpMethod = "GET", value = "根据父id查询地址列表")
     @GetMapping(value = "/list/{pid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MdcAddress> mdcAddresses(@ApiParam(name = "pid", value = "父id", required = true) @PathVariable("pid") Long pid) {
+    public Wrapper<List> mdcAddresses(@PathVariable("pid") Long pid) {
         List<MdcAddress> mdcAddresses = mdcAddressService.listByPid(pid);
-        return mdcAddresses;
+        return WrapMapper.ok(mdcAddresses);
     }
 
     /**
@@ -58,11 +54,10 @@ public class MdcAddressRestController extends BaseController {
      *
      * @return the 4 city
      */
-    @ApiOperation(httpMethod = "GET", value = "查看四级地址")
     @GetMapping(value = "/get4City", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TreeNode> get4City() {
+    public Wrapper<List> get4City() {
         List<TreeNode> treeNodeList = mdcAddressService.get4City();
-        return treeNodeList;
+        return WrapMapper.ok(treeNodeList);
     }
 
 }

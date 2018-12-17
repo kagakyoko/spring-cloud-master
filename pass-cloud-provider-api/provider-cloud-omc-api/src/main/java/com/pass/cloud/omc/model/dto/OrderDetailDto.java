@@ -14,6 +14,7 @@ public class OrderDetailDto implements Serializable {
     private static final long serialVersionUID = 4423448618530228839L;
 
     private Long id;
+
     /**
      * 订单明细序列号
      */

@@ -2,17 +2,16 @@ package com.pass.cloud.mdc.model.dto;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class MdcEditDictDto implements Serializable {
 
     private static final long serialVersionUID = 3530155770606863044L;
+
     /**
      * 字典类型 -0 常量 - 1 文件夹
      */

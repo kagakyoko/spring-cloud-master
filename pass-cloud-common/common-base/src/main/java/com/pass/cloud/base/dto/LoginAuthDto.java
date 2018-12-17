@@ -2,32 +2,40 @@ package com.pass.cloud.base.dto;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
+ * 登录人信息
  * @author takesi
  */
 @Data
-@ApiModel(value = "登录人信息")
 public class LoginAuthDto implements Serializable {
 
     private static final long serialVersionUID = -1137852221455042256L;
 
-    @ApiModelProperty(value = "用户ID")
+    /**
+     * 用户ID
+     */
     private Long userId;
 
-    @ApiModelProperty(value = "登录名")
+    /**
+     * 登录名
+     */
     private String loginName;
 
-    @ApiModelProperty(value = "用户名")
+    /**
+     * 用户名
+     */
     private String userName;
 
-    @ApiModelProperty(value = "组织ID")
+    /**
+     * 组织ID
+     */
     private Long groupId;
 
-    @ApiModelProperty(value = "组织名称")
+    /**
+     * 组织名称
+     */
     private String groupName;
 
     public LoginAuthDto() {

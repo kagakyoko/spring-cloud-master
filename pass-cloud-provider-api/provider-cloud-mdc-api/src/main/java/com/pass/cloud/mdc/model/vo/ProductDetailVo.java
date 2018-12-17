@@ -3,14 +3,12 @@ package com.pass.cloud.mdc.model.vo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class ProductDetailVo implements Serializable {
 
     private static final long serialVersionUID = 4852861985938951261L;

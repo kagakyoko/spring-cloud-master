@@ -1,5 +1,7 @@
 FROM java:8
 
+MAINTAINER nanasetakesi@yahoo.co.jp
+
 RUN mkdir -p /usr/local/discovery{/lib}
 
 ADD target/build/lib/* /usr/local/discovery/lib/
@@ -16,6 +18,6 @@ ADD target/build/spring-cloud-discovery.jar.original /usr/local/discovery/
 
 WORKDIR /usr/local/discovery
 
-CMD ['java', '-jar', './spring-cloud-discovery.jar']
+CMD ["java", "-jar", "./spring-cloud-discovery.jar"]
 
 EXPOSE 8080

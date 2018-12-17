@@ -24,7 +24,6 @@ import com.pass.cloud.mdc.model.vo.ProductVo;
 import com.pass.cloud.mdc.service.MdcProductService;
 import com.pass.cloud.sdk.model.domain.MqMessageData;
 import com.pass.cloud.sdk.model.dto.UpdateAttachmentDto;
-import com.xiaoleilu.hutool.json.JSON;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

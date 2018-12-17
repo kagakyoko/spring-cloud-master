@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.pass.cloud.base.dto.LoginAuthDto;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,27 +24,26 @@ public class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 2393269568666085258L;
 
+    /**
+     * id
+     */
     @Id
-    @ApiModelProperty(value = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
      * 版本号
      */
-    @ApiModelProperty(value = "版本号")
     private Integer version;
     /**
      * 创建人
      */
-    @ApiModelProperty(value = "创建人")
     private String creator;
 
     /**
      * 创建人ID
      */
     @Column(name = "creator_id")
-    @ApiModelProperty(value = "创建人ID")
     private Long creatorId;
 
     /**
@@ -53,7 +51,6 @@ public class BaseEntity implements Serializable {
      */
     @Column(name = "created_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "创建时间", dataType = "Date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;
 
@@ -61,14 +58,12 @@ public class BaseEntity implements Serializable {
      * 最近操作人
      */
     @Column(name = "last_operator")
-    @ApiModelProperty(value = "最近操作人")
     private String lastOperator;
 
     /**
      * 最后操作人ID
      */
     @Column(name = "last_operator_id")
-    @ApiModelProperty(value = "最后操作人ID")
     private Long lastOperatorId;
 
     /**
@@ -76,20 +71,25 @@ public class BaseEntity implements Serializable {
      */
     @Column(name = "update_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "更新时间", dataType = "Date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 
+    /**
+     * pageNum
+     */
     @Transient
-    @ApiModelProperty(value = "pageNum")
     private Integer pageNum;
 
+    /**
+     * pageSize
+     */
     @Transient
-    @ApiModelProperty(value = "pageSize")
     private Integer pageSize;
 
+    /**
+     * 排序值
+     */
     @Transient
-    @ApiModelProperty(value = "排序值")
     private String orderBy;
 
     /**

@@ -3,7 +3,6 @@ package com.pass.cloud.wrapper;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -51,19 +50,16 @@ public class Wrapper<T> implements Serializable {
     /**
      * 编号.
      */
-    @ApiModelProperty(value = "状态码")
     private int code;
 
     /**
      * 信息.
      */
-    @ApiModelProperty(value = "状态信息")
     private String message;
 
     /**
      * 结果数据
      */
-    @ApiModelProperty(value = "结果数据")
     private T result;
 
     /**

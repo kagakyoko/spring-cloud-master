@@ -6,17 +6,16 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class MdcEditProductDto implements Serializable {
 
     private static final long serialVersionUID = 8578699727403591194L;
+
     /**
      * 商品ID
      */
