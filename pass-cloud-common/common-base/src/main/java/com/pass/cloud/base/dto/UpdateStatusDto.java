@@ -10,7 +10,7 @@ import lombok.Data;
  * @author takesi
  */
 @Data
-@ApiModel(value = "更改状态")
+@ApiModel
 public class UpdateStatusDto implements Serializable {
 
     private static final long serialVersionUID = 1494899235149813850L;

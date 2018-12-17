@@ -69,10 +69,12 @@ public class SwaggerConfiguration {
                 .build();
     }
 
+    @SuppressWarnings("unchecked")
     private List<ApiKey> securitySchemes() {
         return new ArrayList(Collections.singleton(new ApiKey("Authorization", "Authorization", "header")));
     }
 
+    @SuppressWarnings("unchecked")
     private List<SecurityContext> securityContexts() {
         return new ArrayList(
                 Collections.singleton(SecurityContext.builder()
@@ -82,6 +84,7 @@ public class SwaggerConfiguration {
         );
     }
 
+    @SuppressWarnings("unchecked")
     private List<SecurityReference> defaultAuth() {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];

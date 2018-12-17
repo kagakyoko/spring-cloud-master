@@ -41,9 +41,9 @@ public class UacActionRestController extends BaseController {
      */
     @ApiOperation(httpMethod = "GET", value = "查询角色列表")
     @GetMapping(value = "/queryListWithPage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PageInfo<ActionVo> queryUacActionListWithPage(ActionMainQueryDto action) {
+    public Wrapper<PageInfo> queryUacActionListWithPage(ActionMainQueryDto action) {
         PageInfo<ActionVo> pageInfo = uacActionService.queryActionListWithPage(action);
-        return pageInfo;
+        return WrapMapper.ok(pageInfo);
     }
 
     /**
