@@ -3,6 +3,7 @@ package com.pass.cloud.wrapper;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 /**
@@ -20,7 +21,7 @@ public class Wrapper<T> implements Serializable {
     /**
      * 成功码.
      */
-    public static final int SUCCESS_CODE = 200;
+    public static final int SUCCESS_CODE = 0;
 
     /**
      * 成功信息.
@@ -30,7 +31,7 @@ public class Wrapper<T> implements Serializable {
     /**
      * 错误码.
      */
-    public static final int ERROR_CODE = 500;
+    public static final int ERROR_CODE = -1;
 
     /**
      * 错误信息.
@@ -40,7 +41,7 @@ public class Wrapper<T> implements Serializable {
     /**
      * 错误码：参数非法
      */
-    public static final int ILLEGAL_ARGUMENT_CODE_ = 100;
+    public static final int ILLEGAL_ARGUMENT_CODE_ = -100;
 
     /**
      * 错误信息：参数非法

@@ -8,10 +8,6 @@ import lombok.Data;
  * @author takesi
  */
 @Data
-<<<<<<< HEAD
-@ApiModel
-=======
->>>>>>> takesi/develop
 public class UpdateStatusDto implements Serializable {
 
     private static final long serialVersionUID = 1494899235149813850L;
