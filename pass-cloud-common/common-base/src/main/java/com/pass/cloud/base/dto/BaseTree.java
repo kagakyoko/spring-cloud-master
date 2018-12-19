@@ -3,7 +3,6 @@ package com.pass.cloud.base.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -19,25 +18,21 @@ public class BaseTree<E, ID> implements Serializable {
     /**
      * ID
      */
-    @ApiModelProperty(value = "ID")
     private ID id;
 
     /**
      * 父ID
      */
-    @ApiModelProperty(value = "父ID")
     private ID pid;
 
     /**
      * 是否含有子节点
      */
-    @ApiModelProperty(value = "是否含有子节点")
     private boolean hasChild = false;
 
     /**
      * 子节点集合
      */
-    @ApiModelProperty(value = "子节点集合")
     private List<E> children;
 
 }

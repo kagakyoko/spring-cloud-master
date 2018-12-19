@@ -16,10 +16,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class GroupZtreeVo extends ZtreeResponseVo implements Serializable {
 
     private static final long serialVersionUID = 8835704500635133372L;
+
     /**
      * 组织类型
      */
     private String groupType;
+
     /**
      * 组织编码
      */

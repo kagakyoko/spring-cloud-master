@@ -11,10 +11,7 @@ import com.pass.cloud.mdc.model.vo.MdcDictVo;
 import com.pass.cloud.mdc.service.MdcDictService;
 import com.pass.cloud.wrapper.WrapMapper;
 import com.pass.cloud.wrapper.Wrapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -32,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/dict")
-@Api(value = "WEB - MdcDictRestController", tags = "MdcDictRestController", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MdcDictRestController extends BaseController {
 
     @Autowired
@@ -43,7 +39,6 @@ public class MdcDictRestController extends BaseController {
      *
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "GET", value = "获取字典树")
     @GetMapping(value = "/getTree", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<List> queryDictTreeList() {
         List<MdcDictVo> dictVoList = mdcDictService.getDictTreeList();
@@ -56,11 +51,6 @@ public class MdcDictRestController extends BaseController {
      * @param id the id
      * @return the wrapper
      */
-
-    @ApiOperation(httpMethod = "GET", value = "根据ID获取字典信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "字典id", type = "path", required = true, dataType = "Long")
-    })
     @GetMapping(value = "/queryById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<MdcDictVo> queryDictVoById(@PathVariable Long id) {
         MdcDictVo mdcDictVo = mdcDictService.getMdcDictVoById(id);
@@ -72,7 +62,6 @@ public class MdcDictRestController extends BaseController {
      *
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "PATCH", value = "根据id修改字典的禁用状态")
     @PatchMapping(value = "/modifyStatus", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper updateMdcDictStatusById(@RequestBody UpdateStatusDto updateStatusDto) {
         LoginAuthDto loginAuthDto = getLoginAuthDto();
@@ -80,7 +69,6 @@ public class MdcDictRestController extends BaseController {
         return WrapMapper.ok();
     }
 
-    @ApiOperation(httpMethod = "PUT", value = "编辑字典")
     @PutMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper saveDict(@RequestBody MdcEditDictDto mdcDictAddDto) {
         MdcDict mdcDict = new MdcDict();
@@ -96,10 +84,6 @@ public class MdcDictRestController extends BaseController {
      * @param id the id
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "DELETE", value = "根据id删除字典")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "字典id", type = "path", required = true, dataType = "Long")
-    })
     @DeleteMapping(value = "/deleteById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<Integer> deleteMdcDictById(@PathVariable Long id) {
         // 判断此字典是否有子节点

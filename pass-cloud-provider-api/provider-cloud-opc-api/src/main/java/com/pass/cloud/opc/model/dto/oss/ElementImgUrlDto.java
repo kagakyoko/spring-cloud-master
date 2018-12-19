@@ -18,10 +18,12 @@ public class ElementImgUrlDto implements Serializable {
      * 图片完整地址
      */
     private String url;
+
     /**
      * 图片名称
      */
     private String name;
+
     /**
      * 图片关联的附件ID
      */

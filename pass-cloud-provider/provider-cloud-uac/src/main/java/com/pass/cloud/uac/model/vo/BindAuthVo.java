@@ -2,14 +2,12 @@ package com.pass.cloud.uac.model.vo;
 
 import java.util.List;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class BindAuthVo {
 
     /**

@@ -6,7 +6,6 @@ import com.pass.cloud.config.properties.AsyncTaskProperties;
 import com.pass.cloud.config.properties.JobProperties;
 import com.pass.cloud.config.properties.QiniuProperties;
 import com.pass.cloud.config.properties.ReliableMessageProperties;
-import com.pass.cloud.config.properties.SwaggerProperties;
 import com.pass.cloud.config.properties.ZookeeperProperties;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -24,8 +23,6 @@ public class PassCloudProperties {
 
     private AsyncTaskProperties task = new AsyncTaskProperties();
 
-    private SwaggerProperties swagger = new SwaggerProperties();
-
     private QiniuProperties qiniu = new QiniuProperties();
 
     private JobProperties job = new JobProperties();
@@ -42,10 +39,6 @@ public class PassCloudProperties {
 
     public void setTask(AsyncTaskProperties task) {
         this.task = task;
-    }
-
-    public void setSwagger(SwaggerProperties swagger) {
-        this.swagger = swagger;
     }
 
     public void setQiniu(QiniuProperties qiniu) {

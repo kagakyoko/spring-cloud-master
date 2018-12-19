@@ -2,15 +2,16 @@ package com.pass.cloud.base.dto;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
+<<<<<<< HEAD
 @ApiModel
+=======
+>>>>>>> takesi/develop
 public class UpdateStatusDto implements Serializable {
 
     private static final long serialVersionUID = 1494899235149813850L;
@@ -18,13 +19,11 @@ public class UpdateStatusDto implements Serializable {
     /**
      * 角色ID
      */
-    @ApiModelProperty(value = "角色ID")
     private Long id;
 
     /**
      * 状态
      */
-    @ApiModelProperty(value = "状态")
     private Integer status;
 
 }

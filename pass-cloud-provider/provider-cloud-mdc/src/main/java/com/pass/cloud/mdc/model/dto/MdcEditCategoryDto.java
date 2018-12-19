@@ -2,21 +2,21 @@ package com.pass.cloud.mdc.model.dto;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
  * @author takesi
  */
 @Data
-@ApiModel
 public class MdcEditCategoryDto implements Serializable {
 
     private static final long serialVersionUID = 8578699727403591194L;
+
     /**
      * 首图的流水号
      */
     private Long imgId;
+
     /**
      * ID
      */

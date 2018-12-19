@@ -16,11 +16,8 @@ public class UpdateAttachmentDto implements Serializable {
 
     private static final long serialVersionUID = -768471033009336091L;
 
-    public UpdateAttachmentDto() {
-        super();
-    }
-
     private String refNo;
+
     /**
      * 商品图片流水号集合
      */
@@ -30,5 +27,9 @@ public class UpdateAttachmentDto implements Serializable {
      * 操作人信息
      */
     private LoginAuthDto loginAuthDto;
+
+    public UpdateAttachmentDto() {
+        super();
+    }
 
 }

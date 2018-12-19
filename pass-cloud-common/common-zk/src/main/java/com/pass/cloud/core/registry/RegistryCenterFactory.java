@@ -30,6 +30,7 @@ public class RegistryCenterFactory {
      * @param zookeeperProperties the zookeeper properties
      * @return 注册中心对象 coordinator registry center
      */
+    @Deprecated
     public static CoordinatorRegistryCenter createCoordinatorRegistryCenter(ZookeeperProperties zookeeperProperties) {
         Hasher hasher = Hashing.md5().newHasher().putString(zookeeperProperties.getZkAddressList(), Charsets.UTF_8);
         HashCode hashCode = hasher.hash();

@@ -11,11 +11,7 @@ import com.pass.cloud.mdc.model.vo.MdcCategoryVo;
 import com.pass.cloud.mdc.service.MdcProductCategoryService;
 import com.pass.cloud.wrapper.WrapMapper;
 import com.pass.cloud.wrapper.Wrapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -33,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/category")
-@Api(value = "WEB - MdcProductCategoryRestController", tags = "MdcProductCategoryRestController", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MdcProductCategoryRestController extends BaseController {
 
     @Autowired
@@ -44,7 +39,6 @@ public class MdcProductCategoryRestController extends BaseController {
      *
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "GET", value = "获取商品分类树")
     @GetMapping(value = "/getTree", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<List> queryCategoryTreeList() {
         List<MdcCategoryVo> categoryVoList = mdcProductCategoryService.getCategoryTreeList();
@@ -57,10 +51,6 @@ public class MdcProductCategoryRestController extends BaseController {
      * @param id the id
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "GET", value = "根据ID获取商品分类信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "商品分类id", type = "path", required = true, dataType = "Long")
-    })
     @GetMapping(value = "/queryById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<MdcCategoryVo> queryCategoryVoById(@PathVariable Long id) {
         MdcCategoryVo mdcCategoryVo = mdcProductCategoryService.getMdcCategoryVoById(id);
@@ -72,17 +62,21 @@ public class MdcProductCategoryRestController extends BaseController {
      *
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "POST", value = "根据id修改商品分类的禁用状态")
     @PatchMapping(value = "/modifyStatus", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper updateMdcCategoryStatusById(@ApiParam(name = "mdcCategoryStatusDto", value = "修改商品分类状态Dto") @RequestBody UpdateStatusDto updateStatusDto) {
+    public Wrapper updateMdcCategoryStatusById(@RequestBody UpdateStatusDto updateStatusDto) {
         LoginAuthDto loginAuthDto = getLoginAuthDto();
         mdcProductCategoryService.updateMdcCategoryStatusById(updateStatusDto, loginAuthDto);
         return WrapMapper.ok();
     }
 
-    @ApiOperation(httpMethod = "POST", value = "编辑商品分类")
+    /**
+     * 编辑商品分类
+     *
+     * @param mdcCategoryAddDto
+     * @return
+     */
     @PutMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper saveCategory(@ApiParam(name = "saveCategory", value = "编辑商品分类") @RequestBody MdcEditCategoryDto mdcCategoryAddDto) {
+    public Wrapper saveCategory(@RequestBody MdcEditCategoryDto mdcCategoryAddDto) {
         MdcProductCategory mdcCategory = new MdcProductCategory();
         LoginAuthDto loginAuthDto = getLoginAuthDto();
         BeanUtils.copyProperties(mdcCategoryAddDto, mdcCategory);
@@ -96,10 +90,6 @@ public class MdcProductCategoryRestController extends BaseController {
      * @param id the id
      * @return the wrapper
      */
-    @ApiOperation(httpMethod = "DELETE", value = "根据id删除商品分类")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "商品分类id", type = "path", required = true, dataType = "Long")
-    })
     @DeleteMapping(value = "/deleteById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Wrapper<Integer> deleteMdcCategoryById(@PathVariable Long id) {
         // 判断此商品分类是否有子节点

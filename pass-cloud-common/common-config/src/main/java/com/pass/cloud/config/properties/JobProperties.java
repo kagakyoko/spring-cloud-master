@@ -10,7 +10,6 @@ public class JobProperties {
 
     private JobTask task = new JobTask();
 
-
     @Data
     public class JobTask {
         private JobCoreProperties dingTalk = new JobCoreProperties();

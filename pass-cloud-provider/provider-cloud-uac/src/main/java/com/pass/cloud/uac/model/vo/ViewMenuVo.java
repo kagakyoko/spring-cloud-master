@@ -3,7 +3,6 @@ package com.pass.cloud.uac.model.vo;
 import java.io.Serializable;
 
 import com.pass.cloud.base.dto.BaseVo;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,11 +10,11 @@ import lombok.EqualsAndHashCode;
  * @author takesi
  */
 @Data
-@ApiModel
 @EqualsAndHashCode(callSuper = true)
 public class ViewMenuVo extends BaseVo implements Serializable {
 
     private static final long serialVersionUID = 2713936834061516613L;
+
     /**
      * 菜单编码
      */
