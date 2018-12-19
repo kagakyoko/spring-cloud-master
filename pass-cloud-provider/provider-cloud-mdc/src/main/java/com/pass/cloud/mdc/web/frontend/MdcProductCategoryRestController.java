@@ -11,6 +11,7 @@ import com.pass.cloud.mdc.model.vo.MdcCategoryVo;
 import com.pass.cloud.mdc.service.MdcProductCategoryService;
 import com.pass.cloud.wrapper.WrapMapper;
 import com.pass.cloud.wrapper.Wrapper;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -70,6 +71,7 @@ public class MdcProductCategoryRestController extends BaseController {
 
     /**
      * 编辑商品分类
+     *
      * @param mdcCategoryAddDto
      * @return
      */

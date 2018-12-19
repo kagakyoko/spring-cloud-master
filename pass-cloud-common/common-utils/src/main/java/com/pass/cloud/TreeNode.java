@@ -31,7 +31,7 @@ public class TreeNode {
     private Long pid;
 
     /**
-     * 孩子节点信息
+     * 子节点信息
      */
     private List<TreeNode> children;
 

@@ -55,6 +55,7 @@ public interface MdcProductService extends IService<MdcProduct> {
      *
      * @param mdcEditProductDto the mdc edit product dto
      * @param loginAuthDto      the login auth dto
+     * @throws JsonProcessingException json转换异常
      */
     void saveProduct(MdcEditProductDto mdcEditProductDto, LoginAuthDto loginAuthDto) throws JsonProcessingException;
 
