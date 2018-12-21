@@ -32,6 +32,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.pass.cloud</groupId>
             <artifactId>common-base</artifactId>
         </dependency>
