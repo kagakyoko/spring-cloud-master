@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/product")
-public class MdcProductRestController extends BaseController {
+public class MdcProductController extends BaseController {
 
     @Autowired
     private MdcProductService mdcProductService;

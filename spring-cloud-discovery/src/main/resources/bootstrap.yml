@@ -7,8 +7,9 @@ spring:
           username: nanasetakesi@yahoo.co.jp
           password: 5Pe-NRk-sgZ-roP
           search-paths: /*
-          default-label: ${spring.profiles.active}
-          basedir: /data/config/passcloud-config-repo
+          default-label: master
+          basedir: /Users/takesi/IdeaProjects/passcloud-config-repo
+      label: master
     inetutils:
       ignoredInterfaces:
         - docker0

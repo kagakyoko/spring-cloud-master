@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/address")
-public class MdcAddressRestController extends BaseController {
+public class MdcAddressController extends BaseController {
 
     @Autowired
     private MdcAddressService mdcAddressService;

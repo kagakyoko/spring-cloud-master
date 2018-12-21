@@ -5,10 +5,10 @@ import java.util.List;
 import com.pass.cloud.base.dto.LoginAuthDto;
 import com.pass.cloud.base.dto.UpdateStatusDto;
 import com.pass.cloud.core.support.BaseController;
-import com.pass.cloud.mdc.model.domain.MdcProductCategory;
-import com.pass.cloud.mdc.model.dto.MdcEditCategoryDto;
-import com.pass.cloud.mdc.model.vo.MdcCategoryVo;
-import com.pass.cloud.mdc.service.MdcProductCategoryService;
+import com.pass.cloud.mdc.model.domain.MdcDict;
+import com.pass.cloud.mdc.model.dto.MdcEditDictDto;
+import com.pass.cloud.mdc.model.vo.MdcDictVo;
+import com.pass.cloud.mdc.service.MdcDictService;
 import com.pass.cloud.wrapper.WrapMapper;
 import com.pass.cloud.wrapper.Wrapper;
 
@@ -28,77 +28,71 @@ import org.springframework.web.bind.annotation.RestController;
  * @author takesi
  */
 @RestController
-@RequestMapping(value = "/category")
-public class MdcProductCategoryRestController extends BaseController {
+@RequestMapping(value = "/dict")
+public class MdcDictController extends BaseController {
 
     @Autowired
-    private MdcProductCategoryService mdcProductCategoryService;
+    private MdcDictService mdcDictService;
 
     /**
-     * 获取商品分类列表数据
+     * 获取字典列表数据
      *
      * @return the wrapper
      */
     @GetMapping(value = "/getTree", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper<List> queryCategoryTreeList() {
-        List<MdcCategoryVo> categoryVoList = mdcProductCategoryService.getCategoryTreeList();
-        return WrapMapper.ok(categoryVoList);
+    public Wrapper<List> queryDictTreeList() {
+        List<MdcDictVo> dictVoList = mdcDictService.getDictTreeList();
+        return WrapMapper.ok(dictVoList);
     }
 
     /**
-     * 根据ID获取商品分类信息.
+     * 根据ID获取字典信息.
      *
      * @param id the id
      * @return the wrapper
      */
     @GetMapping(value = "/queryById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper<MdcCategoryVo> queryCategoryVoById(@PathVariable Long id) {
-        MdcCategoryVo mdcCategoryVo = mdcProductCategoryService.getMdcCategoryVoById(id);
-        return WrapMapper.ok(mdcCategoryVo);
+    public Wrapper<MdcDictVo> queryDictVoById(@PathVariable Long id) {
+        MdcDictVo mdcDictVo = mdcDictService.getMdcDictVoById(id);
+        return WrapMapper.ok(mdcDictVo);
     }
 
     /**
-     * 根据id修改商品分类的禁用状态
+     * 根据id修改字典的禁用状态
      *
      * @return the wrapper
      */
     @PatchMapping(value = "/modifyStatus", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper updateMdcCategoryStatusById(@RequestBody UpdateStatusDto updateStatusDto) {
+    public Wrapper updateMdcDictStatusById(@RequestBody UpdateStatusDto updateStatusDto) {
         LoginAuthDto loginAuthDto = getLoginAuthDto();
-        mdcProductCategoryService.updateMdcCategoryStatusById(updateStatusDto, loginAuthDto);
+        mdcDictService.updateMdcDictStatusById(updateStatusDto, loginAuthDto);
         return WrapMapper.ok();
     }
 
-    /**
-     * 编辑商品分类
-     *
-     * @param mdcCategoryAddDto
-     * @return
-     */
     @PutMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper saveCategory(@RequestBody MdcEditCategoryDto mdcCategoryAddDto) {
-        MdcProductCategory mdcCategory = new MdcProductCategory();
+    public Wrapper saveDict(@RequestBody MdcEditDictDto mdcDictAddDto) {
+        MdcDict mdcDict = new MdcDict();
         LoginAuthDto loginAuthDto = getLoginAuthDto();
-        BeanUtils.copyProperties(mdcCategoryAddDto, mdcCategory);
-        mdcProductCategoryService.saveMdcCategory(mdcCategory, loginAuthDto);
+        BeanUtils.copyProperties(mdcDictAddDto, mdcDict);
+        mdcDictService.saveMdcDict(mdcDict, loginAuthDto);
         return WrapMapper.ok();
     }
 
     /**
-     * 根据id删除商品分类
+     * 根据id删除字典
      *
      * @param id the id
      * @return the wrapper
      */
     @DeleteMapping(value = "/deleteById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Wrapper<Integer> deleteMdcCategoryById(@PathVariable Long id) {
-        // 判断此商品分类是否有子节点
-        boolean hasChild = mdcProductCategoryService.checkCategoryHasChildCategory(id);
+    public Wrapper<Integer> deleteMdcDictById(@PathVariable Long id) {
+        // 判断此字典是否有子节点
+        boolean hasChild = mdcDictService.checkDictHasChildDict(id);
         if (hasChild) {
-            return WrapMapper.wrap(Wrapper.ERROR_CODE, "此商品分类含有子商品分类, 请先删除子商品分类");
+            return WrapMapper.wrap(Wrapper.ERROR_CODE, "此字典含有子字典, 请先删除子字典");
         }
 
-        int result = mdcProductCategoryService.deleteByKey(id);
+        int result = mdcDictService.deleteByKey(id);
         return super.handleResult(result);
     }
 

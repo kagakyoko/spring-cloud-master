@@ -2,21 +2,23 @@ FROM java:8
 
 MAINTAINER nanasetakesi@yahoo.co.jp
 
-RUN mkdir -p /usr/local/discovery{/lib}
+ENV BASE_DIR=/usr/local/discovery
 
-ADD target/build/lib/* /usr/local/discovery/lib/
+RUN mkdir -p ${BASE_DIR}{/lib}
 
-ADD target/build/application.yml /usr/local/discovery/
+ADD target/build/lib/* ${BASE_DIR}/lib/
 
-ADD target/build/bootstrap.yml /usr/local/discovery/
+ADD target/build/application.yml ${BASE_DIR}/
 
-ADD target/build/logback-spring.xml /usr/local/discovery/
+ADD target/build/bootstrap.yml ${BASE_DIR}/
 
-ADD target/build/spring-cloud-discovery.jar /usr/local/discovery/
+ADD target/build/logback-spring.xml ${BASE_DIR}/
 
-ADD target/build/spring-cloud-discovery.jar.original /usr/local/discovery/
+ADD target/build/spring-cloud-discovery.jar ${BASE_DIR}/
 
-WORKDIR /usr/local/discovery
+ADD target/build/spring-cloud-discovery.jar.original $BASE_DIR/
+
+WORKDIR ${BASE_DIR}
 
 CMD ["java", "-jar", "./spring-cloud-discovery.jar"]
 

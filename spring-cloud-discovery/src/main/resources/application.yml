@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: spring-cloud-discovery
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    serialization:
+      indent_output: true
   security:
     user:
       name: admin

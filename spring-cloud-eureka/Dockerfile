@@ -2,21 +2,25 @@ FROM java:8
 
 MAINTAINER nanasetakesi@yahoo.co.jp
 
-RUN mkdir -p /usr/local/eureka{/lib}
+ENV BASE_DIR=/usr/local/eureka
 
-ADD target/build/lib/* /usr/local/eureka/lib/
+RUN mkdir -p ${BASE_DIR}{/lib}
 
-ADD target/build/application.yml /usr/local/eureka/
+COPY bin/startup.sh /usr/local/bin/
 
-ADD target/build/bootstrap.yml /usr/local/eureka/
+ADD target/build/lib/* ${BASE_DIR}/lib/
 
-ADD target/build/logback-spring.xml /usr/local/eureka/
+ADD target/build/application.yml ${BASE_DIR}/
 
-ADD target/build/spring-cloud-eureka.jar /usr/local/eureka/
+ADD target/build/bootstrap.yml ${BASE_DIR}/
 
-ADD target/build/spring-cloud-eureka.jar.original /usr/local/eureka/
+ADD target/build/logback-spring.xml ${BASE_DIR}/
 
-WORKDIR /usr/local/eureka
+ADD target/build/spring-cloud-eureka.jar ${BASE_DIR}/
+
+ADD target/build/spring-cloud-eureka.jar.original ${BASE_DIR}/
+
+WORKDIR ${BASE_DIR}
 
 CMD ["java", "-jar", "./spring-cloud-eureka.jar"]
 
