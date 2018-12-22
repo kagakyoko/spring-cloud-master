@@ -5,10 +5,16 @@ import java.util.List;
 import com.github.pagehelper.PageInfo;
 import com.pass.cloud.base.dto.MessageQueryDto;
 import com.pass.cloud.base.dto.MqMessageVo;
+import com.pass.cloud.mdc.service.hystrix.MdcMqMessageApiHystrix;
+import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
+import com.pass.cloud.wrapper.Wrapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author takesi
  */
+@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcMqMessageApiHystrix.class)
 public interface MdcMqMessageFeignApi {
 
     /**
@@ -17,7 +23,8 @@ public interface MdcMqMessageFeignApi {
      * @param messageKeyList the message key list
      * @return the wrapper
      */
-    List<String> queryMessageKeyList(List<String> messageKeyList);
+    @GetMapping(value = "/api/mdc/message/queryMessageKeyList")
+    Wrapper<List<String>> queryMessageKeyList(List<String> messageKeyList);
 
     /**
      * Query message list with page wrapper.
@@ -25,6 +32,7 @@ public interface MdcMqMessageFeignApi {
      * @param messageQueryDto the message query dto
      * @return the wrapper
      */
-    PageInfo<MqMessageVo> queryMessageListWithPage(MessageQueryDto messageQueryDto);
+    @GetMapping(value = "/api/mdc/message/queryMessageListWithPage")
+    Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(MessageQueryDto messageQueryDto);
 
 }

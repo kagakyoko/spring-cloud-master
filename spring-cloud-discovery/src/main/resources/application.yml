@@ -1,8 +1,6 @@
 server:
   port: 8787
 spring:
-  application:
-    name: spring-cloud-discovery
   jackson:
     date-format: "yyyy-MM-dd HH:mm:ss"
     serialization:

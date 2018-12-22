@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-gateway
+    name: provider-cloud-mdc
   cloud:
     config:
       fail-fast: true
@@ -8,7 +8,7 @@ spring:
         service-id: spring-cloud-discovery
         enabled: true
       label: master
-      profile: master
+      profile: mdc
       username: admin
       password: admin
 eureka:

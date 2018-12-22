@@ -1,10 +1,17 @@
 package com.pass.cloud.mdc.service;
 
 import com.pass.cloud.mdc.model.dto.ProductDto;
+import com.pass.cloud.mdc.service.hystrix.MdcProductFeignHystrix;
+import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
+import com.pass.cloud.wrapper.Wrapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author takesi
  */
+@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcProductFeignHystrix.class)
 public interface MdcProductFeignApi {
 
     /**
@@ -13,7 +20,8 @@ public interface MdcProductFeignApi {
      * @param productDto the product dto
      * @return the int
      */
-    Integer updateProductStockById(ProductDto productDto);
+    @GetMapping(value = "/api/product/updateProductStockById")
+    Wrapper<Integer> updateProductStockById(ProductDto productDto);
 
     /**
      * Gets main image.
@@ -22,6 +30,7 @@ public interface MdcProductFeignApi {
      *                  id
      * @return the main image
      */
-    String getMainImage(Long productId);
+    @GetMapping(value = "/api/product/getMainImage")
+    Wrapper<String> getMainImage(@RequestParam("productId") Long productId);
 
 }

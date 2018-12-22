@@ -10,12 +10,14 @@ import com.pass.cloud.wrapper.WrapMapper;
 import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author takesi
  */
+@RefreshScope
 @RestController
 public class MdcAddressQueryFeignClient extends BaseController implements MdcAddressQueryFeignApi {
 

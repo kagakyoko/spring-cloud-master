@@ -1,5 +1,4 @@
 server:
   port: 7979
-spring:
-  application:
-    name: spring-cloud-gateway
+logging:
+  config: classpath:logback-spring.xml

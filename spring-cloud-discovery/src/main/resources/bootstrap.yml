@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: spring-cloud-discovery
   cloud:
     config:
       server:

@@ -3,6 +3,7 @@ package com.pass.cloud.mdc.service.hystrix;
 import com.pass.cloud.mdc.model.dto.GlobalExceptionLogDto;
 import com.pass.cloud.mdc.service.MdcExceptionLogFeignApi;
 
+import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Component;
 public class MdcExceptionLogFeignHystrix implements MdcExceptionLogFeignApi {
 
     @Override
-    public void saveAndSendExceptionLog(GlobalExceptionLogDto exceptionLogDto) {
-
+    public Wrapper saveAndSendExceptionLog(GlobalExceptionLogDto exceptionLogDto) {
+        return null;
     }
 
 }

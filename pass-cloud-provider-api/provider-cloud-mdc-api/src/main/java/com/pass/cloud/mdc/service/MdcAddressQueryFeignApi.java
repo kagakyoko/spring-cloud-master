@@ -1,13 +1,17 @@
 package com.pass.cloud.mdc.service;
 
 import com.pass.cloud.mdc.model.dto.AddressDTO;
+import com.pass.cloud.mdc.service.hystrix.MdcAddressQueryFeignHystrix;
+import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
 import com.pass.cloud.wrapper.Wrapper;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author takesi
  */
+@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcAddressQueryFeignHystrix.class)
 public interface MdcAddressQueryFeignApi {
 
     /**

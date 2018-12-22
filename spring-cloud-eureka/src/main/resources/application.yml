@@ -1,8 +1,6 @@
 server:
   port: 8761
 spring:
-  application:
-    name: spring-cloud-eureka
   security:
     user:
       name: root

@@ -7,6 +7,7 @@ import com.pass.cloud.base.dto.MessageQueryDto;
 import com.pass.cloud.base.dto.MqMessageVo;
 import com.pass.cloud.mdc.service.MdcMqMessageFeignApi;
 
+import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,12 +17,12 @@ import org.springframework.stereotype.Component;
 public class MdcMqMessageApiHystrix implements MdcMqMessageFeignApi {
 
     @Override
-    public List<String> queryMessageKeyList(List<String> messageKeyList) {
+    public Wrapper<List<String>> queryMessageKeyList(List<String> messageKeyList) {
         return null;
     }
 
     @Override
-    public PageInfo<MqMessageVo> queryMessageListWithPage(MessageQueryDto messageQueryDto) {
+    public Wrapper<PageInfo<MqMessageVo>> queryMessageListWithPage(MessageQueryDto messageQueryDto) {
         return null;
     }
 
