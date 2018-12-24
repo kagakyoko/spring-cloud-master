@@ -2,7 +2,7 @@ package com.pass.cloud.security.service;
 
 import java.util.Collection;
 
-import com.pass.cloud.security.domain.SecurityUser;
+import com.pass.cloud.security.core.domain.SecurityUser;
 import com.pass.cloud.uac.model.domain.UacUser;
 import com.pass.cloud.uac.service.UacUserService;
 
@@ -12,7 +12,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 /**
  * @author takesi

@@ -2,7 +2,7 @@ package com.pass.cloud.mdc.service;
 
 import com.pass.cloud.mdc.model.dto.ProductDto;
 import com.pass.cloud.mdc.service.hystrix.MdcProductFeignHystrix;
-import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
+import com.pass.cloud.security.feign.Oauth2FeignAutoConfiguration;
 import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author takesi
  */
-@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcProductFeignHystrix.class)
+@FeignClient(value = "passcloud-provider-mdc", configuration = Oauth2FeignAutoConfiguration.class, fallback = MdcProductFeignHystrix.class)
 public interface MdcProductFeignApi {
 
     /**

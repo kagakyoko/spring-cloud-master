@@ -1,10 +1,10 @@
-package com.pass.cloud.security.domain;
+package com.pass.cloud.security.core.domain;
 
 import java.util.Collection;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,16 +18,16 @@ public class SecurityUser implements UserDetails {
 
     private static final String ENABLE = "ENABLE";
 
+    private Collection<GrantedAuthority> authorities;
+
     @Getter
     private Long userId;
 
     @Getter
     private String nickName;
 
-    @Getter
     private String loginName;
 
-    @Getter
     private String loginPwd;
 
     private String status;
@@ -38,25 +38,23 @@ public class SecurityUser implements UserDetails {
     @Getter
     private String groupName;
 
-    private Collection<GrantedAuthority> authorities;
-
     public SecurityUser(Long userId, String loginName, String loginPwd, String nickName, Long groupId, String groupName) {
-        this.userId = userId;
-        this.loginName = loginName;
-        this.loginPwd = loginPwd;
-        this.nickName = nickName;
-        this.groupId = groupId;
-        this.groupName = groupName;
+        this.setUserId(userId);
+        this.setLoginName(loginName);
+        this.setLoginPwd(loginPwd);
+        this.setNickName(nickName);
+        this.setGroupId(groupId);
+        this.setGroupName(groupName);
     }
 
     public SecurityUser(Long userId, String loginName, String loginPwd, String nickName, Long groupId, String groupName, String status, Collection<GrantedAuthority> grantedAuthorities) {
-        this.userId = userId;
-        this.loginName = loginName;
-        this.loginPwd = loginPwd;
-        this.nickName = nickName;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.status = status;
+        this.setUserId(userId);
+        this.setLoginName(loginName);
+        this.setLoginPwd(loginPwd);
+        this.setNickName(nickName);
+        this.setGroupId(groupId);
+        this.setGroupName(groupName);
+        this.setStatus(status);
         this.authorities = grantedAuthorities;
     }
 
@@ -67,12 +65,12 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.getLoginPwd();
+        return this.loginPwd;
     }
 
     @Override
     public String getUsername() {
-        return this.getLoginName();
+        return this.loginName;
     }
 
     @Override

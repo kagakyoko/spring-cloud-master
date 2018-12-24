@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.Netty4ClientHttpRequestFactory;
 import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
@@ -22,7 +21,7 @@ import org.springframework.security.oauth2.common.AuthenticationScheme;
  */
 @Configuration
 @EnableConfigurationProperties(Oauth2ClientProperties.class)
-public class OAuth2FeignAutoConfiguration {
+public class Oauth2FeignAutoConfiguration {
 
     private final Oauth2ClientProperties oauth2ClientProperties;
 
@@ -32,7 +31,7 @@ public class OAuth2FeignAutoConfiguration {
      * @param oauth2ClientProperties the oauth 2 client properties
      */
     @Autowired
-    public OAuth2FeignAutoConfiguration(Oauth2ClientProperties oauth2ClientProperties) {
+    public Oauth2FeignAutoConfiguration(Oauth2ClientProperties oauth2ClientProperties) {
         this.oauth2ClientProperties = oauth2ClientProperties;
     }
 
@@ -57,10 +56,11 @@ public class OAuth2FeignAutoConfiguration {
      *
      * @return the o auth 2 rest template
      */
+    @Deprecated
     @Bean("passcloudOAuth2RestTemplate")
     public OAuth2RestTemplate oAuth2RestTemplate() {
         final OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(resourceDetails(), new DefaultOAuth2ClientContext());
-        oAuth2RestTemplate.setRequestFactory(new Netty4ClientHttpRequestFactory());
+        oAuth2RestTemplate.setRequestFactory(new org.springframework.http.client.Netty4ClientHttpRequestFactory());
         return oAuth2RestTemplate;
     }
 

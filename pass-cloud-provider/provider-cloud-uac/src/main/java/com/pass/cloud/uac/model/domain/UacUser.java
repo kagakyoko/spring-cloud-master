@@ -9,7 +9,6 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pass.cloud.core.mybatis.BaseEntity;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.ibatis.type.Alias;
@@ -128,11 +127,9 @@ public class UacUser extends BaseEntity implements Serializable {
      * 用户所属的组织ID
      */
     @Transient
-    @ApiModelProperty(value = "用户所属的组织ID")
     private Long groupId;
 
     @Transient
-    @ApiModelProperty(value = "用户所属的组织名称")
     private String groupName;
 
 }

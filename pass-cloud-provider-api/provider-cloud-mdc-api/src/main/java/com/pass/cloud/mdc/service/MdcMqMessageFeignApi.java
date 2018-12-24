@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.pass.cloud.base.dto.MessageQueryDto;
 import com.pass.cloud.base.dto.MqMessageVo;
 import com.pass.cloud.mdc.service.hystrix.MdcMqMessageApiHystrix;
-import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
+import com.pass.cloud.security.feign.Oauth2FeignAutoConfiguration;
 import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * @author takesi
  */
-@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcMqMessageApiHystrix.class)
+@FeignClient(value = "passcloud-provider-mdc", configuration = Oauth2FeignAutoConfiguration.class, fallback = MdcMqMessageApiHystrix.class)
 public interface MdcMqMessageFeignApi {
 
     /**

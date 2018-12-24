@@ -25,11 +25,6 @@
         </dependency>
         <dependency>
             <groupId>com.pass.cloud</groupId>
-            <artifactId>common-base</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.pass.cloud</groupId>
             <artifactId>provider-cloud-tpc-api</artifactId>
         </dependency>
     </dependencies>
