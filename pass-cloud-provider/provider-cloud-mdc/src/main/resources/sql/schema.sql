@@ -1,5 +1,11 @@
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
+-- Database structure for pass_cloud_mdc
+-- ----------------------------
+DROP DATABASE IF EXISTS `pass_cloud_mdc`;
+CREATE DATABASE `pass_cloud_mdc`;
+USE `pass_cloud_mdc`;
+-- ----------------------------
 -- Table structure for pc_mdc_address
 -- ----------------------------
 DROP TABLE IF EXISTS `pc_mdc_address`;
