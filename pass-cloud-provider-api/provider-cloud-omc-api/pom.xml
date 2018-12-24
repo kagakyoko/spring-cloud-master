@@ -14,11 +14,7 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.pass.cloud</groupId>
-            <artifactId>common-base</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
     </dependencies>
 
     <build>

@@ -226,7 +226,7 @@ public class GlobalConstant {
                     return paymentTypeEnum;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("非法参数");
         }
 
     }

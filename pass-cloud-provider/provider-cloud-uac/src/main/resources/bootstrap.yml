@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: provider-cloud-uac
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        service-id: spring-cloud-discovery
+        enabled: true
+      label: develop
+      profile: uac
+      username: admin
+      password: admin
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8761/eureka/

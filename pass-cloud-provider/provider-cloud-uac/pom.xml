@@ -36,6 +36,10 @@
         </dependency>
         <dependency>
             <groupId>com.pass.cloud</groupId>
+            <artifactId>security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.pass.cloud</groupId>
             <artifactId>provider-cloud-uac-api</artifactId>
         </dependency>
     </dependencies>

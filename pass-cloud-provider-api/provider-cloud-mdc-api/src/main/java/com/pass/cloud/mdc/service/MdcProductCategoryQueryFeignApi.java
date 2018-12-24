@@ -7,7 +7,7 @@ import com.pass.cloud.annotation.NoNeedAccessAuthentication;
 import com.pass.cloud.mdc.model.dto.ProductCategoryDto;
 import com.pass.cloud.mdc.model.dto.ProductReqDto;
 import com.pass.cloud.mdc.service.hystrix.MdcProductCategoryQueryFeignHystrix;
-import com.pass.cloud.security.feign.OAuth2FeignAutoConfiguration;
+import com.pass.cloud.security.feign.Oauth2FeignAutoConfiguration;
 import com.pass.cloud.wrapper.Wrapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * @author takesi
  */
-@FeignClient(value = "passcloud-provider-mdc", configuration = OAuth2FeignAutoConfiguration.class, fallback = MdcProductCategoryQueryFeignHystrix.class)
+@FeignClient(value = "passcloud-provider-mdc", configuration = Oauth2FeignAutoConfiguration.class, fallback = MdcProductCategoryQueryFeignHystrix.class)
 public interface MdcProductCategoryQueryFeignApi {
 
     /**
