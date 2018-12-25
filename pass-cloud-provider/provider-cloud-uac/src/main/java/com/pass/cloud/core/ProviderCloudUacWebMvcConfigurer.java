@@ -10,14 +10,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * @author takesi
  */
 @Configuration
 @EnableConfigurationProperties(value = PassCloudProperties.class)
-public class ProviderCloudUacWebMvcConfigurer extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
+public class ProviderCloudUacWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

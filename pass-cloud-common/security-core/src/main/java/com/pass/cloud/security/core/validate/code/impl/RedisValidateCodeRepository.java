@@ -2,12 +2,13 @@ package com.pass.cloud.security.core.validate.code.impl;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.Resource;
+
 import com.pass.cloud.security.core.validate.code.ValidateCode;
 import com.pass.cloud.security.core.validate.code.ValidateCodeException;
 import com.pass.cloud.security.core.validate.code.ValidateCodeRepository;
 import com.pass.cloud.security.core.validate.code.ValidateCodeType;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -20,17 +21,8 @@ import org.springframework.web.context.request.ServletWebRequest;
 @Component
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
-    private final RedisTemplate<String, Object> redisTemplate;
-
-    /**
-     * Instantiates a new Redis validate code repository.
-     *
-     * @param redisTemplate the redis template
-     */
-    @Autowired
-    public RedisValidateCodeRepository(RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
 
     /**
      * Save.

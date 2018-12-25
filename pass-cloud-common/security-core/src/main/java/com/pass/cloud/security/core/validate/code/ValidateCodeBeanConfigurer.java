@@ -2,7 +2,12 @@ package com.pass.cloud.security.core.validate.code;
 
 import com.google.code.kaptcha.Producer;
 import com.pass.cloud.security.core.properties.SecurityProperties;
+import com.pass.cloud.security.core.validate.code.email.DefaultEmailCodeSender;
+import com.pass.cloud.security.core.validate.code.email.EmailCodeSender;
 import com.pass.cloud.security.core.validate.code.image.ImageCodeGenerator;
+import com.pass.cloud.security.core.validate.code.sms.DefaultSmsCodeSender;
+import com.pass.cloud.security.core.validate.code.sms.SmsCodeSender;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +40,28 @@ public class ValidateCodeBeanConfigurer {
         codeGenerator.setSecurityProperties(securityProperties);
         codeGenerator.setCaptchaProducer(captchaProducer);
         return codeGenerator;
+    }
+
+    /**
+     * 短信验证码发送器
+     *
+     * @return sms code sender
+     */
+    @Bean
+    @ConditionalOnMissingBean(SmsCodeSender.class)
+    public SmsCodeSender smsCodeSender() {
+        return new DefaultSmsCodeSender();
+    }
+
+    /**
+     * 邮箱验证码发送器
+     *
+     * @return sms code sender
+     */
+    @Bean
+    @ConditionalOnMissingBean(EmailCodeSender.class)
+    public EmailCodeSender emailCodeSender() {
+        return new DefaultEmailCodeSender();
     }
 
 }
