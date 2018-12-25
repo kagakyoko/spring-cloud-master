@@ -2,11 +2,13 @@ package com.pass.cloud.security.core.properties;
 
 import java.io.Serializable;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author takesi
  */
+@Data
 @ConfigurationProperties(prefix = "passcloud.security")
 public class SecurityProperties implements Serializable {
 
